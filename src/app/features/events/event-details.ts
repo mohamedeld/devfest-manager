@@ -1,3 +1,4 @@
+import { CartService } from './../../core/cart.service';
 import { Component, inject, input } from '@angular/core';
 import { EventsService } from '../../core/events.service';
 import { DatePipe } from '@angular/common';
@@ -47,6 +48,7 @@ import { RouterLink } from '@angular/router';
 
             <button
               class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 shadow-lg transition"
+              (click)="cartService.addTicket(id())"
             >
               Buy Tickets
             </button>
@@ -62,4 +64,5 @@ export class EventDetails {
   id = input.required<string>();
 
   readonly eventResource = this.eventService.getEventById(this.id);
+  readonly cartService = inject(CartService);
 }

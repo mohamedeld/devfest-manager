@@ -50,5 +50,22 @@
       "id": "SrPmY33"
     }
   ],
-  "tickets": []
+  "tickets": [
+    {
+      "eventId": "3",
+      "id": 1
+    },
+    {
+      "eventId": "3",
+      "id": 2
+    },
+    {
+      "eventId": "3",
+      "id": 3
+    },
+    {
+      "eventId": "3",
+      "id": 4
+    }
+  ]
 }

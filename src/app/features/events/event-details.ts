@@ -1,12 +1,12 @@
 import { CartService } from './../../core/cart.service';
 import { Component, inject, input } from '@angular/core';
 import { EventsService } from '../../core/events.service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-event-details',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, NgOptimizedImage],
   template: `
     <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
       <!-- Back Button -->
@@ -41,9 +41,9 @@ import { RouterLink } from '@angular/router';
 
           <!-- Right: Actions -->
           <div class="bg-gray-50 p-6 rounded-xl h-fit border border-gray-100">
-            <div class="h-48 bg-gray-200 rounded mb-4 overflow-hidden">
+            <div class="h-48 bg-gray-200 rounded mb-4 overflow-hidden relative">
               <!-- We will optimize this image in Day 2 -->
-              <img [src]="event.image" class="w-full h-full object-cover" />
+              <img [ngSrc]="event.image" class="w-full h-full object-cover" priority fill />
             </div>
 
             <button

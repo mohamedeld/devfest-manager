@@ -5,6 +5,7 @@ import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TabGroup } from '../../shared/tabs/tab-group';
 import { Tab } from '../../shared/tabs/tab';
+import { CartStore } from '../../core/store-feature/cart-store';
 
 @Component({
   selector: 'app-event-details',
@@ -90,7 +91,8 @@ import { Tab } from '../../shared/tabs/tab';
 
             <button
               class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 shadow-lg transition"
-              (click)="cartService.addTicket(id())"
+              (click)="(addToCart)"
+              [disabled]="cartStore.isPending()"
             >
               Buy Tickets
             </button>
@@ -104,7 +106,11 @@ export class EventDetails {
   // TODO Mod 3: id = input<string>()
   readonly eventService = inject(EventsService);
   id = input.required<string>();
-
+  readonly cartStore = inject(CartStore);
   readonly eventResource = this.eventService.getEventById(this.id);
   readonly cartService = inject(CartService);
+
+  addToCart() {
+    this.cartStore.addToCart({ eventId: this.id() });
+  }
 }

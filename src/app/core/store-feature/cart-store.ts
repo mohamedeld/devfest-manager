@@ -1,4 +1,11 @@
-import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withHooks,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { setError, setFulfilled, setPending, withRequestStatus } from './request-status.feature';
 import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -82,5 +89,10 @@ export const CartStore = signalStore(
         ),
       ),
     };
+  }),
+  withHooks({
+    onInit(store) {
+      store.load();
+    },
   }),
 );

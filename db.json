@@ -33,7 +33,7 @@
       "date": "2026-10-20T12:15",
       "location": "asdfasdfasdf",
       "speakers": ["asdfasdf", "asdfasdf", "asdfasdf"],
-      "image": "",
+      "image": "/images/ssr-at-scale.webp",
       "id": "SrPmY33"
     }
   ],
